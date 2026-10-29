@@ -143,7 +143,7 @@
             
             <!-- Theme Toggle Button -->
             <button id="themeToggleBtn" type="button"
-              class="w-10 h-10 rounded-full flex items-center justify-center text-[#4A2E25] hover:bg-[#E9A6A1]/20 border border-[#E9A6A1]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              class="hidden lg:flex w-10 h-10 rounded-full items-center justify-center text-[#4A2E25] hover:bg-[#E9A6A1]/20 border border-[#E9A6A1]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
               aria-label="Toggle Theme Mode" title="Toggle Light/Dark Theme">
               <!-- Sun Icon (shown in Dark Mode) -->
               <svg id="themeIconSun" class="w-5 h-5 hidden text-[#E9A6A1] transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,7 +157,7 @@
 
             <!-- Order / Enquire CTA -->
             <button type="button"
-              class="open-cake-modal-btn hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold btn-primary">
+              class="open-cake-modal-btn hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold btn-primary">
               <span>Order / Enquire</span>
               <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -166,10 +166,10 @@
 
             <!-- Mobile Hamburger Button -->
             <button id="mobileMenuBtn" type="button"
-              class="lg:hidden p-2.5 rounded-xl text-[#4A2E25] hover:bg-[#E9A6A1]/20 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              class="lg:hidden p-2.5 rounded-xl text-[#4A2E25] dark:text-[#FFF7ED] bg-transparent hover:bg-[#E9A6A1]/20 dark:hover:bg-[#E9A6A1]/15 border border-[#E9A6A1]/40 dark:border-[#E9A6A1]/30 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] transition-all duration-200"
               aria-label="Open Navigation Menu">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
@@ -579,8 +579,8 @@
               $4.75
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
-            <div>
+          <div class="p-6 flex-1 flex flex-col space-y-3">
+            <div class="flex-1">
               <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
                 Butter Croissants
               </h3>
@@ -614,8 +614,8 @@
               $7.50 / Slice
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
-            <div>
+          <div class="p-6 flex-1 flex flex-col space-y-3">
+            <div class="flex-1">
               <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
                 Strawberry Dream Cake
               </h3>
@@ -649,8 +649,8 @@
               $4.25
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
-            <div>
+          <div class="p-6 flex-1 flex flex-col space-y-3">
+            <div class="flex-1">
               <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
                 Chocolate Chunk Cookies
               </h3>
@@ -684,8 +684,8 @@
               $8.50 / Loaf
             </span>
           </div>
-          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
-            <div>
+          <div class="p-6 flex-1 flex flex-col space-y-3">
+            <div class="flex-1">
               <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
                 Artisan Sourdough Bread
               </h3>
@@ -736,11 +736,11 @@
           <img src="https://images.pexels.com/photos/5681606/pexels-photo-5681606.jpeg"
             alt="Delicate Cake Decoration and Floral Piping" class="w-full h-full object-cover object-center"
             loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/90 via-[#4A2E25]/30 to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
-            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Precision Piping</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1">Delicate Cake Decoration</h3>
-            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1 max-w-md">
+            <span class="text-xs uppercase tracking-widest text-[#F9C5C1] font-extrabold drop-shadow-md">Precision Piping</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1 drop-shadow-lg text-white">Delicate Cake Decoration</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/95 mt-1 max-w-md drop-shadow">
               Hand-piping velvety Italian buttercream and garnishing with edible organic botanicals for bespoke
               celebrations.
             </p>
@@ -753,11 +753,11 @@
           <img src="https://images.unsplash.com/photo-1623334044303-241021148842?q=80&w=800&auto=format&fit=crop"
             alt="Golden Flaky Layers of Fresh Croissants" class="w-full h-full object-cover object-center"
             loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/90 via-[#4A2E25]/30 to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
-            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Lamination Mastery</span>
-            <h3 class="font-serif text-2xl font-bold mt-1">Golden, Flaky Layers</h3>
-            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1">
+            <span class="text-xs uppercase tracking-widest text-[#F9C5C1] font-extrabold drop-shadow-md">Lamination Mastery</span>
+            <h3 class="font-serif text-2xl font-bold mt-1 drop-shadow-lg text-white">Golden, Flaky Layers</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/95 mt-1 drop-shadow">
               Aerated honeycomb alveoli achieved through strict temperature control and French butter turns.
             </p>
           </div>
@@ -769,11 +769,11 @@
           <img src="https://images.pexels.com/photos/15803796/pexels-photo-15803796.jpeg"
             alt="Warm Chocolate Ganache Drizzle over Fresh Pastries" class="w-full h-full object-cover object-center"
             loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/90 via-[#4A2E25]/30 to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
-            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Pure Valrhona Grand Cru</span>
-            <h3 class="font-serif text-2xl font-bold mt-1">Silky Chocolate Drizzle</h3>
-            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1">
+            <span class="text-xs uppercase tracking-widest text-[#F9C5C1] font-extrabold drop-shadow-md">Pure Valrhona Grand Cru</span>
+            <h3 class="font-serif text-2xl font-bold mt-1 drop-shadow-lg text-white">Silky Chocolate Drizzle</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/95 mt-1 drop-shadow">
               Tempered 70% dark chocolate folded over delicate French puff pastries and warm financiers.
             </p>
           </div>
@@ -785,11 +785,11 @@
           <img src="https://images.pexels.com/photos/13042721/pexels-photo-13042721.jpeg"
             alt="Fresh Sourdough Bread Pulled from Hearth Stone Oven" class="w-full h-full object-cover object-center"
             loading="lazy">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/90 via-[#4A2E25]/30 to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
-            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Stone Hearth Heritage</span>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1">Fresh Out of the Hearth</h3>
-            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1 max-w-md">
+            <span class="text-xs uppercase tracking-widest text-[#F9C5C1] font-extrabold drop-shadow-md">Stone Hearth Heritage</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1 drop-shadow-lg text-white">Fresh Out of the Hearth</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/95 mt-1 max-w-md drop-shadow">
               Baked at 240°C on natural refractory stone for that unmistakable crackle and rustic blistered mahogany
               ear.
             </p>

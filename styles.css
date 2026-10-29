@@ -147,6 +147,16 @@ body {
   box-shadow: 0 4px 20px -2px rgba(74, 46, 37, 0.08);
 }
 
+/* Dark mode navbar */
+html.dark .nav-glass {
+  background-color: rgba(26, 14, 11, 0.92);
+  border-bottom-color: rgba(233, 166, 161, 0.15);
+}
+html.dark .nav-glass.scrolled {
+  background-color: rgba(20, 10, 8, 0.98);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
 /* Active Nav Underline */
 .nav-link {
   position: relative;
@@ -619,4 +629,16 @@ html.dark #backToTopBtn {
 html.dark #backToTopBtn:hover {
   background-color: #311D19 !important;
   box-shadow: 0 12px 30px rgba(233, 166, 161, 0.3) !important;
+}
+
+
+/* =====================================================
+   Section 2 — 4 Product Cards: Even text alignment
+   Titles share a fixed min-height so description text
+   always starts at the same vertical position
+   ===================================================== */
+#treats .grid article .font-serif {
+  min-height: 3.5rem;   /* ~2 lines of text at xl size */
+  display: flex;
+  align-items: flex-start;
 }
