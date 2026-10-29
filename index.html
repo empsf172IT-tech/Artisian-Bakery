@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUMBÉ — European Artisan Bakery & Patisserie</title>
+
+  <!-- Favicon: Custom CRUMBÉ wheat & croissant emblem -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23FFF7ED' stroke='%23E9A6A1' stroke-width='4'/%3E%3Cpath d='M30 65 C30 40, 70 40, 70 65 C60 62, 50 62, 30 65 Z' fill='%23E9A6A1'/%3E%3Cpath d='M38 52 C45 42, 55 42, 62 52' stroke='%234A2E25' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='50' cy='32' r='4' fill='%234A2E25'/%3E%3Cpath d='M46 22 Q50 16 54 22' stroke='%234A2E25' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS 3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              DEFAULT: '#FFF7ED',
+              50: '#FFFDFB',
+              100: '#FFF7ED',
+              200: '#FEEDDE',
+              300: '#FDE0C7',
+            },
+            cocoa: {
+              DEFAULT: '#4A2E25',
+              light: '#654238',
+              muted: '#7C5B52',
+              dark: '#351F19',
+              deep: '#261510',
+            },
+            blush: {
+              DEFAULT: '#E9A6A1',
+              light: '#FDF2F1',
+              soft: '#F6D2CF',
+              dark: '#D88A85',
+              hover: '#DE948F',
+            },
+            gold: '#D4A373'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Theme Detection & Initialization Script -->
+  <script>
+    if (localStorage.getItem('crumbe-theme') === 'dark' || (!('crumbe-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-[#FFF7ED] text-[#4A2E25] font-sans antialiased selection:bg-[#E9A6A1] selection:text-[#4A2E25]">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Bakery Fresh Announcement"
+    class="bg-[#4A2E25] text-[#FFF7ED] text-xs font-medium py-2 px-4 tracking-wider uppercase flex items-center justify-center space-x-3 text-center border-b border-[#E9A6A1]/20">
+    <span class="inline-flex items-center text-[#E9A6A1]">
+      <svg class="w-3.5 h-3.5 mr-1.5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd"
+          d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.789l1.599.799L9 4.323V3a1 1 0 011-1z"
+          clip-rule="evenodd" />
+      </svg>
+      Artisan Morning Batch
+    </span>
+    <span class="hidden sm:inline text-[#E9A6A1]/60">•</span>
+    <span class="text-xs normal-case sm:uppercase">Fresh croissants & sourdough pull from our ovens twice daily at 7:30
+      AM & 1:00 PM</span>
+    <span class="hidden md:inline text-[#E9A6A1]/60">•</span>
+    <a href="#menu" class="hidden md:inline-flex text-[#E9A6A1] hover:underline font-semibold ml-1">View Today's Bake
+      &rarr;</a>
+  </aside>
+
+  <!-- Sticky Premium Navigation Bar (Permanently Pinned to Top on Scroll) -->
+  <header class="sticky top-0 z-50 w-full">
+    <nav id="mainNavbar" class="w-full nav-glass transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+
+          <!-- Brand Logo: CRUMBÉ -->
+          <a href="#hero"
+            class="group flex items-center space-x-2.5 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] rounded-lg p-1"
+            aria-label="CRUMBÉ Home">
+            <div
+              class="w-10 h-10 rounded-full bg-[#FFFDF9] border border-[#E9A6A1]/60 flex items-center justify-center shadow-sm group-hover:border-[#E9A6A1] transition-colors">
+              <!-- Custom Wheat Sprig & Croissant Vector Icon -->
+              <svg class="w-6 h-6 text-[#4A2E25] group-hover:text-[#D88A85] transition-colors" viewBox="0 0 32 32"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 21C8.5 13.5 23.5 13.5 25 21C21 19.5 11 19.5 7 21Z" fill="#E9A6A1" fill-opacity="0.75"
+                  stroke="#4A2E25" stroke-width="1.5" stroke-linejoin="round" />
+                <path d="M12 17C14 13.5 18 13.5 20 17" stroke="#4A2E25" stroke-width="1.25" stroke-linecap="round" />
+                <circle cx="16" cy="8.5" r="1.5" fill="#4A2E25" />
+                <path d="M14 6C15 4 17 4 18 6" stroke="#4A2E25" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-[#4A2E25] leading-none">
+                CRUMB<span class="text-[#4A2E25] relative inline-block">É<span
+                    class="absolute -top-1 right-0 text-[#E9A6A1] text-xs font-serif italic">´</span></span>
+              </span>
+              <span class="text-[9px] uppercase tracking-[0.28em] text-[#7C5B52] font-semibold">Artisan
+                Patisserie</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <div class="hidden lg:flex items-center space-x-8">
+            <a href="#hero" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25] active">Home</a>
+            <a href="#story" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Our Story</a>
+            <a href="#treats" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Signature
+              Treats</a>
+            <a href="#craftsmanship"
+              class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Craftsmanship</a>
+            <a href="#menu" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Menu</a>
+            <a href="#ambience" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Bakery
+              Tour</a>
+            <a href="#contact" class="nav-link text-sm font-medium text-[#4A2E25]/85 hover:text-[#4A2E25]">Visit &
+              Contact</a>
+          </div>
+
+          <!-- Navigation Actions: Theme Toggle, Order / Enquire CTA & Mobile Toggle -->
+          <div class="flex items-center space-x-2.5 sm:space-x-3.5">
+            
+            <!-- Theme Toggle Button -->
+            <button id="themeToggleBtn" type="button"
+              class="w-10 h-10 rounded-full flex items-center justify-center text-[#4A2E25] hover:bg-[#E9A6A1]/20 border border-[#E9A6A1]/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              aria-label="Toggle Theme Mode" title="Toggle Light/Dark Theme">
+              <!-- Sun Icon (shown in Dark Mode) -->
+              <svg id="themeIconSun" class="w-5 h-5 hidden text-[#E9A6A1] transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <!-- Moon Icon (shown in Light Mode) -->
+              <svg id="themeIconMoon" class="w-5 h-5 text-[#4A2E25] transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
+
+            <!-- Order / Enquire CTA -->
+            <button type="button"
+              class="open-cake-modal-btn hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold btn-primary">
+              <span>Order / Enquire</span>
+              <svg class="w-3.5 h-3.5 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobileMenuBtn" type="button"
+              class="lg:hidden p-2.5 rounded-xl text-[#4A2E25] hover:bg-[#E9A6A1]/20 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              aria-label="Open Navigation Menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer Menu Overlay -->
+  <div id="mobileNavBackdrop"
+    class="fixed inset-0 bg-[#4A2E25]/60 z-50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+  </div>
+  <aside id="mobileNavDrawer"
+    class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-[#FFF7ED] z-50 shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out border-l border-[#E9A6A1]/30">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-[#E9A6A1]/30">
+        <div class="flex items-center space-x-2">
+          <span class="font-serif text-2xl font-bold text-[#4A2E25]">CRUMBÉ</span>
+          <span
+            class="text-[9px] uppercase tracking-widest text-[#E9A6A1] font-bold px-2 py-0.5 rounded-full bg-[#4A2E25]">Paris
+            & NY</span>
+        </div>
+        <button id="mobileMenuCloseBtn" class="p-2 rounded-lg text-[#4A2E25] hover:bg-[#E9A6A1]/25 focus:outline-none"
+          aria-label="Close Navigation Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="mt-8 flex flex-col space-y-4">
+        <a href="#hero"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Home</a>
+        <a href="#story"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Our
+          Story</a>
+        <a href="#treats"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Signature
+          Treats</a>
+        <a href="#craftsmanship"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Craftsmanship</a>
+        <a href="#menu"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Interactive
+          Menu</a>
+        <a href="#custom-cakes"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Custom
+          Cakes</a>
+        <a href="#ambience"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Bakery
+          Ambience</a>
+        <a href="#testimonials"
+          class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2 border-b border-[#E9A6A1]/15">Customer
+          Love</a>
+        <a href="#contact" class="mobile-nav-link text-base font-medium text-[#4A2E25] hover:text-[#D88A85] py-2">Visit
+          & Contact</a>
+      </nav>
+
+      <!-- Mobile Theme Toggle -->
+      <div class="mt-4 pt-4 border-t border-[#E9A6A1]/20 flex items-center justify-between">
+        <span class="text-xs uppercase tracking-wider font-semibold text-[#4A2E25]">Appearance</span>
+        <button id="mobileThemeToggleBtn" type="button"
+          class="px-3.5 py-1.5 rounded-full text-xs font-bold border border-[#E9A6A1]/60 flex items-center space-x-1.5 text-[#4A2E25] hover:bg-[#E9A6A1]/20 transition-colors">
+          <span id="mobileThemeText">Dark Mode 🌙</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-[#E9A6A1]/30">
+      <button type="button"
+        class="open-cake-modal-btn w-full py-3 rounded-full text-center text-xs uppercase tracking-wider font-bold btn-primary block mb-3">
+        Order / Enquire Now
+      </button>
+      <p class="text-xs text-center text-[#7C5B52]">Handcrafted with love every morning.</p>
+    </div>
+  </aside>
+
+  <!-- ========================================== -->
+  <!-- SECTION 1: Premium Hero Advertisement      -->
+  <!-- ========================================== -->
+  <section id="hero"
+    class="relative overflow-hidden pt-8 pb-16 sm:py-20 lg:py-24 bg-gradient-to-b from-[#FFF7ED] via-[#FFFDF9] to-[#FFF7ED]">
+
+    <!-- Decorative Floating Elements (Tiny hearts, sparkles, bakery wheat illustrations) -->
+    <div class="absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+      <!-- Floating Blush Heart 1 -->
+      <div class="absolute top-16 left-[6%] animate-float-slow text-[#E9A6A1]/70">
+        <svg class="w-7 h-7 filter drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </div>
+      <!-- Tiny Sparkle 1 -->
+      <div class="absolute top-32 left-[44%] animate-sparkle text-[#D4A373]">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+        </svg>
+      </div>
+      <!-- Floating Blush Heart 2 -->
+      <div class="absolute bottom-20 right-[8%] animate-float-reverse text-[#E9A6A1]/60">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </div>
+      <!-- Sparkle 2 -->
+      <div class="absolute top-[55%] left-[3%] animate-pulse-glow text-[#E9A6A1]">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" />
+        </svg>
+      </div>
+      <!-- Bakery Flourish Vector (Wheat sprig subtle watermark) -->
+      <div class="absolute -right-12 top-10 opacity-10 text-[#4A2E25]">
+        <svg class="w-72 h-72" viewBox="0 0 100 100" fill="currentColor">
+          <path
+            d="M50 5 Q52 30 50 95 M45 25 Q50 30 55 25 M43 38 Q50 43 57 38 M41 51 Q50 56 59 51 M40 64 Q50 69 60 64" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+        <!-- Hero Editorial Column (Left, 7 cols) -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+
+          <!-- Brand Badge -->
+          <div
+            class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-[#FFFDF9] border border-[#E9A6A1]/60 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#E9A6A1] animate-ping"></span>
+            <span class="text-xs uppercase tracking-[0.2em] font-semibold text-[#4A2E25]">
+              CRUMBÉ • Artisan Patisserie & Boulangerie
+            </span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1
+            class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-[#4A2E25] tracking-tight leading-[1.12]">
+            Baked With Love. <br class="hidden sm:inline">
+            <span class="italic font-normal text-[#4A2E25] relative">
+              Made to Be
+              <span class="relative inline-block text-[#D88A85] font-serif">
+                Remembered.
+                <!-- Cute hand-drawn underline arc -->
+                <svg class="absolute -bottom-2 left-0 w-full h-3 text-[#E9A6A1]" viewBox="0 0 100 12" fill="none"
+                  preserveAspectRatio="none">
+                  <path d="M0 6 C30 14, 70 0, 100 8" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                </svg>
+              </span>
+            </span>
+          </h1>
+
+          <!-- Supporting Text -->
+          <p
+            class="text-base sm:text-lg md:text-xl text-[#654238] max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            Welcome to <strong class="font-bold text-[#4A2E25]">CRUMBÉ</strong> — where European pastry tradition meets
+            modern artisanal elegance. Every morning, we handcraft golden croissants, delicate tiered cakes, gourmet
+            cookies, and stoneground sourdough from pure Normandy butter and timeless recipes.
+          </p>
+
+          <!-- Call to Action Buttons -->
+          <div
+            class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+            <a href="#treats"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm uppercase tracking-wider font-bold btn-primary text-center">
+              Discover Our Treats
+            </a>
+            <a href="#menu"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm uppercase tracking-wider font-bold btn-secondary text-center">
+              Explore the Menu
+            </a>
+          </div>
+
+          <!-- Quality Micro-Badges -->
+          <div
+            class="pt-6 border-t border-[#E9A6A1]/30 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#7C5B52]">
+            <div class="flex items-center space-x-2">
+              <span
+                class="w-5 h-5 rounded-full bg-[#E9A6A1]/30 text-[#4A2E25] flex items-center justify-center">✓</span>
+              <span class="font-medium">100% Normandy Butter</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span
+                class="w-5 h-5 rounded-full bg-[#E9A6A1]/30 text-[#4A2E25] flex items-center justify-center">✓</span>
+              <span class="font-medium">36-Hour Slow Ferment</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span
+                class="w-5 h-5 rounded-full bg-[#E9A6A1]/30 text-[#4A2E25] flex items-center justify-center">✓</span>
+              <span class="font-medium">Fresh Daily 7:00 AM</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Premium Imagery Composition (Right, 5 cols) -->
+        <div class="lg:col-span-5 relative">
+
+          <!-- Main Advertising Composition Card -->
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+
+            <!-- Glow backdrop -->
+            <div
+              class="absolute -inset-4 bg-gradient-to-tr from-[#E9A6A1]/40 to-[#FFFDF9] rounded-[2.5rem] blur-xl opacity-70 transform -rotate-1">
+            </div>
+
+            <!-- Primary Large Hero Image -->
+            <div
+              class="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[#FFFDF9] bg-[#FFF7ED] img-zoom-container">
+              <img src="https://images.pexels.com/photos/35658321/pexels-photo-35658321.jpeg"
+                alt="CRUMBÉ Freshly Baked Golden Croissants and Artisan Pastries"
+                class="w-full h-[430px] sm:h-[480px] object-cover object-center" loading="eager">
+              <!-- Gradient Overlay for text contrast -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/70 via-transparent to-transparent"></div>
+
+              <!-- Dedicated Glassmorphic Bottom Caption -->
+              <div
+                class="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-2xl bg-[#351F19]/80 backdrop-blur-md border border-[#E9A6A1]/30 text-[#FFF7ED]">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Morning
+                      Signature</span>
+                    <h3 class="font-serif text-base sm:text-xl font-bold">The Golden Honeycomb Croissant</h3>
+                  </div>
+                  <span
+                    class="bg-[#FFFDF9] text-[#4A2E25] px-3 py-1 rounded-full text-xs font-bold shadow-md whitespace-nowrap ml-2">
+                    27 Layers
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Stamp / Badge (Top-Right) -->
+            <div
+              class="absolute -top-5 -right-4 sm:-right-6 bg-[#4A2E25] text-[#FFF7ED] p-4 rounded-full w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center text-center shadow-xl border-2 border-[#E9A6A1] animate-gentle-drift z-20">
+              <span class="text-[9px] uppercase tracking-wider text-[#E9A6A1] font-bold">Crumbé</span>
+              <span class="font-serif text-sm font-bold leading-tight">Master Artisan</span>
+              <span class="text-[8px] text-[#FFF7ED]/80">Award 2026</span>
+            </div>
+
+            <!-- Floating Mini Card: Fresh Batch Announcement (Neatly Positioned Upper-Left, Clear of Bottom Text) -->
+            <div
+              class="absolute top-20 sm:top-24 -left-3 sm:-left-7 bg-[#FFFDF9] p-3 sm:p-3.5 rounded-2xl shadow-xl border border-[#E9A6A1]/40 flex items-center space-x-3 max-w-[230px] sm:max-w-[250px] animate-float-slow z-20">
+              <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=300&auto=format&fit=crop"
+                  alt="Strawberry Dream Cake Preview" class="w-full h-full object-cover">
+              </div>
+              <div class="text-left">
+                <p class="text-[10px] uppercase tracking-wider text-[#E9A6A1] font-bold">Hot From The Oven</p>
+                <p class="text-xs font-bold text-[#4A2E25]">Berry Gateaux & Brioche</p>
+                <p class="text-[10px] text-[#7C5B52]">Restocked 15m ago</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 2: Freshly Baked Happiness         -->
+  <!-- ========================================== -->
+  <section id="story" class="py-20 sm:py-24 bg-[#FFFDF9] relative border-y border-[#E9A6A1]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">
+          <span>Our Brand Philosophy</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          A Little Sweetness in Every Moment.
+        </h2>
+        <div class="w-16 h-0.5 bg-[#E9A6A1] mx-auto rounded-full"></div>
+        <p class="text-[#654238] text-base sm:text-lg leading-relaxed">
+          At <strong class="text-[#4A2E25]">CRUMBÉ</strong>, baking is not merely a recipe — it is a daily devotion to
+          sensory joy. From the crackle of freshly caramelized crusts at dawn to the velvety richness of dark Belgian
+          chocolate, we infuse warmth and passion into every single creation.
+        </p>
+      </div>
+
+      <!-- 3 Feature Highlight Cards (Even Alignment) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
+
+        <!-- Highlight 1: Freshly Baked Every Day -->
+        <div class="crumb-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between h-full relative group">
+          <div>
+            <div
+              class="w-16 h-16 mx-auto rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/50 flex items-center justify-center text-[#4A2E25] group-hover:scale-110 group-hover:bg-[#E9A6A1] group-hover:text-[#4A2E25] transition-all duration-300 shadow-sm mb-6">
+              <!-- Oven Clock / Sun Icon -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="min-h-[3.5rem] flex items-center justify-center text-center mb-4">
+              <h3 class="font-serif text-2xl font-bold text-[#4A2E25]">Freshly Baked Every Day</h3>
+            </div>
+            <p class="text-sm text-[#7C5B52] leading-relaxed text-even">
+              Our master bakers begin before sunrise at 3:30 AM so that every morning pastry, loaf, and tart greeting your
+              table is crispy, warm, and freshly pulled from our stone-deck ovens.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#E9A6A1]/20 text-xs font-bold text-[#D88A85] uppercase tracking-wider text-center mt-6">
+            Warm Bakes Daily • 7:00 AM
+          </div>
+        </div>
+
+        <!-- Highlight 2: Crafted With Premium Ingredients -->
+        <div class="crumb-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between h-full relative group">
+          <div>
+            <div
+              class="w-16 h-16 mx-auto rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/50 flex items-center justify-center text-[#4A2E25] group-hover:scale-110 group-hover:bg-[#E9A6A1] group-hover:text-[#4A2E25] transition-all duration-300 shadow-sm mb-6">
+              <!-- Wheat / Ingredients Icon -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+            </div>
+            <div class="min-h-[3.5rem] flex items-center justify-center text-center mb-4">
+              <h3 class="font-serif text-2xl font-bold text-[#4A2E25]">Crafted With Premium Ingredients</h3>
+            </div>
+            <p class="text-sm text-[#7C5B52] leading-relaxed text-even">
+              We partner with certified French Normandy churners for 84% butterfat butter, source Valrhona grand cru
+              chocolates, Madagascar Bourbon vanilla, and heritage unbleached stoneground flours.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#E9A6A1]/20 text-xs font-bold text-[#D88A85] uppercase tracking-wider text-center mt-6">
+            Zero Artificial Preservatives
+          </div>
+        </div>
+
+        <!-- Highlight 3: Made With Love and Care -->
+        <div class="crumb-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between h-full relative group">
+          <div>
+            <div
+              class="w-16 h-16 mx-auto rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/50 flex items-center justify-center text-[#4A2E25] group-hover:scale-110 group-hover:bg-[#E9A6A1] group-hover:text-[#4A2E25] transition-all duration-300 shadow-sm mb-6">
+              <!-- Heart in Hands Icon -->
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <div class="min-h-[3.5rem] flex items-center justify-center text-center mb-4">
+              <h3 class="font-serif text-2xl font-bold text-[#4A2E25]">Made With Love and Care</h3>
+            </div>
+            <p class="text-sm text-[#7C5B52] leading-relaxed text-even">
+              Every swirl of chantilly, every delicate fold of puff pastry, and every gentle score on our sourdough is
+              completed by hand with patience, precision, and genuine European craftsmanship.
+            </p>
+          </div>
+          <div class="pt-6 border-t border-[#E9A6A1]/20 text-xs font-bold text-[#D88A85] uppercase tracking-wider text-center mt-6">
+            Artisanal Touch in Every Crumb
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 3: Our Signature Treats            -->
+  <!-- ========================================== -->
+  <section id="treats" class="py-20 sm:py-24 bg-[#FFF7ED] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="space-y-3 max-w-xl">
+          <span class="text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">Unforgettable Classics</span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+            Our Signature Treats
+          </h2>
+          <p class="text-[#654238] text-base">
+            Four timeless bakery hallmarks that have defined the <strong class="text-[#4A2E25]">CRUMBÉ</strong> standard
+            of excellence.
+          </p>
+        </div>
+        <a href="#menu"
+          class="inline-flex items-center text-sm font-bold text-[#4A2E25] hover:text-[#D88A85] group transition-colors">
+          <span>View Full Bakery Menu</span>
+          <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- 4 Balanced Product Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Product 1: Butter Croissants -->
+        <article class="crumb-card rounded-3xl overflow-hidden flex flex-col group">
+          <div class="relative h-64 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/30926134/pexels-photo-30926134.jpeg"
+              alt="Golden Flaky Butter Croissants" class="w-full h-full object-cover object-center" loading="lazy">
+            <span
+              class="absolute top-4 left-4 bg-[#E9A6A1] text-[#4A2E25] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              Bestseller
+            </span>
+            <span
+              class="absolute bottom-4 right-4 bg-[#FFFDF9]/95 text-[#4A2E25] text-sm font-bold px-3 py-1 rounded-full shadow">
+              $4.75
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Butter Croissants
+              </h3>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                72-hour slow fermented dough laminated with pure Charentes-Poitou French butter into 27 whisper-thin,
+                airy, golden honeycombed layers.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between">
+              <span class="text-[11px] text-[#7C5B52] italic">Crisp exterior • Buttery melt</span>
+              <button type="button"
+                class="open-cake-modal-btn text-xs font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                Enquire
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2: Strawberry Dream Cake -->
+        <article class="crumb-card rounded-3xl overflow-hidden flex flex-col group">
+          <div class="relative h-64 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=800&auto=format&fit=crop"
+              alt="Delicate Strawberry Dream Cake with Fresh Chantilly" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-4 left-4 bg-[#E9A6A1] text-[#4A2E25] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              Customer Favorite
+            </span>
+            <span
+              class="absolute bottom-4 right-4 bg-[#FFFDF9]/95 text-[#4A2E25] text-sm font-bold px-3 py-1 rounded-full shadow">
+              $7.50 / Slice
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Strawberry Dream Cake
+              </h3>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Cloud-soft Genoise sponge layered with light Tahitian vanilla bean chantilly cream and freshly sliced
+                organic strawberries.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between">
+              <span class="text-[11px] text-[#7C5B52] italic">Silky • Delicate • Fresh</span>
+              <button type="button"
+                class="open-cake-modal-btn text-xs font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                Order Cake
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3: Chocolate Chunk Cookies -->
+        <article class="crumb-card rounded-3xl overflow-hidden flex flex-col group">
+          <div class="relative h-64 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop"
+              alt="Warm Valrhona Chocolate Chunk Cookies with Maldon Salt"
+              class="w-full h-full object-cover object-center" loading="lazy">
+            <span
+              class="absolute top-4 left-4 bg-[#E9A6A1] text-[#4A2E25] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              Must Try
+            </span>
+            <span
+              class="absolute bottom-4 right-4 bg-[#FFFDF9]/95 text-[#4A2E25] text-sm font-bold px-3 py-1 rounded-full shadow">
+              $4.25
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Chocolate Chunk Cookies
+              </h3>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Studded with molten puddles of 70% dark Valrhona chocolate, brown butter caramel notes, and finished
+                with Maldon sea salt flakes.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between">
+              <span class="text-[11px] text-[#7C5B52] italic">Fudgy core • Crisp rim</span>
+              <button type="button"
+                class="open-cake-modal-btn text-xs font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                Enquire
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4: Artisan Sourdough Bread -->
+        <article class="crumb-card rounded-3xl overflow-hidden flex flex-col group">
+          <div class="relative h-64 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?q=80&w=800&auto=format&fit=crop"
+              alt="Crusty Stoneground Artisan Sourdough Loaf" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-4 left-4 bg-[#E9A6A1] text-[#4A2E25] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+              House Specialty
+            </span>
+            <span
+              class="absolute bottom-4 right-4 bg-[#FFFDF9]/95 text-[#4A2E25] text-sm font-bold px-3 py-1 rounded-full shadow">
+              $8.50 / Loaf
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Artisan Sourdough Bread
+              </h3>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                36-hour wild levain sourdough made with organic whole wheat, baked in high steam for a deep blistered
+                crust and custard-like crumb.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between">
+              <span class="text-[11px] text-[#7C5B52] italic">Wild Levain • Stone-baked</span>
+              <button type="button"
+                class="open-cake-modal-btn text-xs font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                Reserve
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 4: The Art of Sweetness (Gallery)  -->
+  <!-- ========================================== -->
+  <section id="craftsmanship" class="py-20 sm:py-24 bg-[#FFFDF9] border-y border-[#E9A6A1]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">Behind the Flour & Sugar</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          The Art of Sweetness
+        </h2>
+        <p class="text-[#654238] text-base leading-relaxed">
+          Witness the quiet mastery, texture, and exacting passion that goes into every single creation at the <strong
+            class="text-[#4A2E25]">CRUMBÉ</strong> pastry atelier.
+        </p>
+      </div>
+
+      <!-- Asymmetrical Editorial Collage -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+
+        <!-- Craft 1: Delicate Cake Decoration (Large, 7 cols) -->
+        <div
+          class="md:col-span-7 rounded-3xl overflow-hidden relative group shadow-lg min-h-[340px] sm:min-h-[420px] img-zoom-container">
+          <img src="https://images.pexels.com/photos/5681606/pexels-photo-5681606.jpeg"
+            alt="Delicate Cake Decoration and Floral Piping" class="w-full h-full object-cover object-center"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
+            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Precision Piping</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1">Delicate Cake Decoration</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1 max-w-md">
+              Hand-piping velvety Italian buttercream and garnishing with edible organic botanicals for bespoke
+              celebrations.
+            </p>
+          </div>
+        </div>
+
+        <!-- Craft 2: Golden Flaky Layers (5 cols) -->
+        <div
+          class="md:col-span-5 rounded-3xl overflow-hidden relative group shadow-lg min-h-[340px] sm:min-h-[420px] img-zoom-container">
+          <img src="https://images.unsplash.com/photo-1623334044303-241021148842?q=80&w=800&auto=format&fit=crop"
+            alt="Golden Flaky Layers of Fresh Croissants" class="w-full h-full object-cover object-center"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
+            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Lamination Mastery</span>
+            <h3 class="font-serif text-2xl font-bold mt-1">Golden, Flaky Layers</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1">
+              Aerated honeycomb alveoli achieved through strict temperature control and French butter turns.
+            </p>
+          </div>
+        </div>
+
+        <!-- Craft 3: Chocolate Ganache Drizzle (5 cols) -->
+        <div
+          class="md:col-span-5 rounded-3xl overflow-hidden relative group shadow-lg min-h-[320px] sm:min-h-[380px] img-zoom-container">
+          <img src="https://images.pexels.com/photos/15803796/pexels-photo-15803796.jpeg"
+            alt="Warm Chocolate Ganache Drizzle over Fresh Pastries" class="w-full h-full object-cover object-center"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
+            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Pure Valrhona Grand Cru</span>
+            <h3 class="font-serif text-2xl font-bold mt-1">Silky Chocolate Drizzle</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1">
+              Tempered 70% dark chocolate folded over delicate French puff pastries and warm financiers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Craft 4: Hearth Stone Oven Bread (7 cols) -->
+        <div
+          class="md:col-span-7 rounded-3xl overflow-hidden relative group shadow-lg min-h-[320px] sm:min-h-[380px] img-zoom-container">
+          <img src="https://images.pexels.com/photos/13042721/pexels-photo-13042721.jpeg"
+            alt="Fresh Sourdough Bread Pulled from Hearth Stone Oven" class="w-full h-full object-cover object-center"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/85 via-[#4A2E25]/20 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-[#FFF7ED]">
+            <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Stone Hearth Heritage</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold mt-1">Fresh Out of the Hearth</h3>
+            <p class="text-xs sm:text-sm text-[#FFF7ED]/90 mt-1 max-w-md">
+              Baked at 240°C on natural refractory stone for that unmistakable crackle and rustic blistered mahogany
+              ear.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 5: A Menu Worth Falling For        -->
+  <!-- ========================================== -->
+  <section id="menu" class="py-20 sm:py-24 bg-[#FFF7ED] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">Curated Patisserie</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          A Menu Worth Falling For
+        </h2>
+        <p class="text-[#654238] text-base">
+          Browse our everyday catalog across fine pastry, celebratory cakes, warm cookies, and rustic loaves.
+        </p>
+      </div>
+
+      <!-- Interactive Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-14" role="tablist"
+        aria-label="Menu Category Filter">
+        <button type="button" data-filter="all"
+          class="menu-filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#4A2E25] text-[#FFF7ED] shadow-md transition-all">
+          All Treats
+        </button>
+        <button type="button" data-filter="pastries"
+          class="menu-filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFFDF9] text-[#4A2E25] border border-[#E9A6A1]/40 hover:border-[#E9A6A1] transition-all">
+          Croissants & Pastries
+        </button>
+        <button type="button" data-filter="cakes"
+          class="menu-filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFFDF9] text-[#4A2E25] border border-[#E9A6A1]/40 hover:border-[#E9A6A1] transition-all">
+          Cakes & Cupcakes
+        </button>
+        <button type="button" data-filter="cookies"
+          class="menu-filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFFDF9] text-[#4A2E25] border border-[#E9A6A1]/40 hover:border-[#E9A6A1] transition-all">
+          Cookies & Brownies
+        </button>
+        <button type="button" data-filter="breads"
+          class="menu-filter-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FFFDF9] text-[#4A2E25] border border-[#E9A6A1]/40 hover:border-[#E9A6A1] transition-all">
+          Artisan Breads
+        </button>
+      </div>
+
+      <!-- Menu Items Grid Container -->
+      <div id="menuItemsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+        <!-- Category: Pastries -->
+        <!-- 1. Almond Frangipane Croissant -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="pastries">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/13439693/pexels-photo-13439693.jpeg"
+              alt="Almond Frangipane Croissant with Toasted Almonds" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Signature
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $5.50
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Almond Frangipane Croissant
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Twice-baked butter croissant filled with luscious roasted almond cream, dusted with toasted almonds and
+                confectioner's sugar.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Contains tree nuts</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Pain au Chocolat -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="pastries">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop"
+              alt="Flaky French Pain au Chocolat" class="w-full h-full object-cover object-center" loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Classic
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $5.00
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Pain au Chocolat
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Golden laminated pastry dough rolled with two batons of semi-sweet French dark chocolate that melt into
+                soft pockets.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">100% French Butter</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Kouign-Amann Breton -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="pastries">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1621236378699-8597faf6a176?q=80&w=600&auto=format&fit=crop"
+              alt="Caramelized Golden Kouign-Amann Breton" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Favorite
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $5.75
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Kouign-Amann Breton
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Breton pastry dough layered with salted butter and organic cane sugar, caramelized into a crunchy,
+                sticky exterior.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Caramelized Crust</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Cakes -->
+        <!-- 4. Pistachio Raspberry Mille-Feuille -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="cakes">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/2273823/pexels-photo-2273823.jpeg"
+              alt="Pistachio Raspberry Mille-Feuille Cake Slice" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Seasonal
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $8.25
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Pistachio Raspberry Mille-Feuille
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Caramelized inverse puff pastry layered with Sicilian pistachio mousseline and fresh tart raspberry
+                compote.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Sicilian Bronte Pistachio</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Salted Caramel Opera Gateau -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="cakes">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/13218488/pexels-photo-13218488.jpeg"
+              alt="Salted Caramel Opera Gateau Layered Cake" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Chef Pick
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $8.75
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Salted Caramel Opera Gateau
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Almond Joconde sponge soaked in espresso syrup, layered with fleur de sel caramel buttercream and dark
+                ganache glaze.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">7 Rich Layers</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Lavender Honey Blossom Cupcake -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="cakes">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/11845545/pexels-photo-11845545.jpeg"
+              alt="Handcrafted Lavender Honey Blossom Cupcake" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Delicate
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $4.50
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Lavender Honey Blossom Cupcake
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Light chiffon crumb infused with wild Provence lavender, crowned with whipped raw wildflower honey
+                buttercream.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Floral & Subtle</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Cookies & Brownies -->
+        <!-- 7. Double Fudge Espresso Brownie -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="cookies">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/36500579/pexels-photo-36500579.jpeg"
+              alt="Fudgy Dark Chocolate Espresso Brownie" class="w-full h-full object-cover object-center"
+              loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Decadent
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $4.80
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Double Fudge Espresso Brownie
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Ultra-fudgy single-origin dark chocolate brownie spiked with freshly pulled espresso and crackly
+                paper-thin sugar top.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Gluten-friendly available</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Traditional French Madeleines -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="cookies">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=600&auto=format&fit=crop"
+              alt="Traditional French Madeleines Dusted with Powdered Sugar"
+              class="w-full h-full object-cover object-center" loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Box of 4
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $6.00
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Traditional French Madeleines
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Iconic scalloped sponge cakes scented with Meyer lemon zest and vanilla bean glaze. Baked hot every two
+                hours.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Warm sponge</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Artisan Breads -->
+        <!-- 9. Rosemary Sea Salt Focaccia -->
+        <div class="menu-item-card crumb-card rounded-3xl overflow-hidden flex flex-col justify-between group"
+          data-category="breads">
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.pexels.com/photos/11654224/pexels-photo-11654224.jpeg"
+              alt="Rosemary Sea Salt Focaccia Bread" class="w-full h-full object-cover object-center" loading="lazy">
+            <span
+              class="absolute top-3.5 left-3.5 bg-[#FFFDF9]/95 text-[#4A2E25] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+              Savory
+            </span>
+            <span
+              class="absolute bottom-3.5 right-3.5 bg-[#4A2E25] text-[#FFF7ED] text-xs font-bold px-3 py-1 rounded-full shadow">
+              $6.50
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-[#4A2E25] group-hover:text-[#D88A85] transition-colors">
+                Rosemary Sea Salt Focaccia
+              </h4>
+              <p class="text-xs text-[#7C5B52] mt-1.5 leading-relaxed">
+                Extra virgin olive oil drenched dough dimpled by hand, adorned with fresh garden rosemary and coarse
+                Maldon crystals.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-[#E9A6A1]/20 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span class="italic text-[11px]">Warm Slice / Slab</span>
+              <button type="button"
+                class="open-cake-modal-btn font-bold text-[#4A2E25] hover:text-[#D88A85] transition-colors underline decoration-[#E9A6A1]">
+                + Reserve
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Menu Footer Note -->
+      <div class="mt-12 text-center">
+        <p class="text-xs text-[#7C5B52]">
+          Need catering or bulk pastry orders for morning meetings or weddings?
+          <button type="button"
+            class="open-cake-modal-btn text-[#4A2E25] font-bold underline decoration-[#E9A6A1] hover:text-[#D88A85] ml-1">
+            Request Bespoke Order Consultation
+          </button>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 6: Sweet Moments, Beautifully Made -->
+  <!-- ========================================== -->
+  <section id="custom-cakes" class="py-20 sm:py-24 bg-[#FFFDF9] relative border-y border-[#E9A6A1]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Imagery Column (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#E9A6A1]/40 img-zoom-container">
+            <img src="https://images.pexels.com/photos/20009383/pexels-photo-20009383.jpeg"
+              alt="Bespoke Tiered Celebration Cake by CRUMBÉ" class="w-full h-80 sm:h-96 object-cover object-center"
+              loading="lazy">
+            <div
+              class="absolute top-4 left-4 bg-[#FFFDF9]/95 text-[#4A2E25] px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+              Custom Patisserie
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden shadow-md h-36 img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=600&auto=format&fit=crop"
+                alt="Romantic Birthday Cake and Floral Accents" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-md h-36 img-zoom-container">
+              <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=600&auto=format&fit=crop"
+                alt="Luxury Dessert Gift Box" class="w-full h-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">
+            <span>Bespoke Celebrations</span>
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25] leading-tight">
+            For Every Celebration Worth Remembering.
+          </h2>
+
+          <p class="text-[#654238] text-base sm:text-lg leading-relaxed">
+            From intimate birthday gatherings and romantic anniversary milestones to grand multi-tiered wedding
+            centerpieces, our pastry chefs handcraft custom cakes that look like contemporary art and taste
+            unforgettable.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/40">
+              <h4 class="font-serif text-base font-bold text-[#4A2E25]">Personalized Flavors</h4>
+              <p class="text-xs text-[#7C5B52] mt-1">Tahitian vanilla bean, salted caramel crunch, Sicilian pistachio,
+                or dark Valrhona raspberry.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/40">
+              <h4 class="font-serif text-base font-bold text-[#4A2E25]">Artistic Custom Florals</h4>
+              <p class="text-xs text-[#7C5B52] mt-1">Styled with fresh organic pressed petals, edible gold foil, and
+                hand-sculpted sugar ornaments.</p>
+            </div>
+          </div>
+
+          <!-- Prominent CTA Button -->
+          <div class="pt-4">
+            <button type="button"
+              class="open-cake-modal-btn px-8 py-4 rounded-full text-sm uppercase tracking-wider font-bold btn-primary inline-flex items-center space-x-2">
+              <span>Create Your Dream Cake</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+            <p class="text-xs text-[#7C5B52] mt-2.5">
+              Custom cake consultations require at least 5 days notice for bespoke tiers.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 7: A Peek Inside Our Bakery        -->
+  <!-- ========================================== -->
+  <section id="ambience" class="py-20 sm:py-24 bg-[#FFF7ED] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">European Bakery Experience</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          A Peek Inside Our Bakery
+        </h2>
+        <p class="text-[#654238] text-base leading-relaxed">
+          Step into our warm boutique studio. Inhaling the aroma of caramelized butter, warm espresso, and stoneground
+          wheat is where your love affair with <strong class="text-[#4A2E25]">CRUMBÉ</strong> begins.
+        </p>
+      </div>
+
+      <!-- Bakery Ambience Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Ambience Card 1: Cozy Pastry Display -->
+        <div class="crumb-card rounded-3xl overflow-hidden group">
+          <div class="h-60 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=700&auto=format&fit=crop"
+              alt="Boutique Bakery Counter & Glass Pastry Display" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h4 class="font-serif text-lg font-bold text-[#4A2E25]">Cozy Pastry Display</h4>
+            <p class="text-xs text-[#7C5B52] mt-1 leading-relaxed">
+              Polished marble showcases filled fresh every morning with tarts, choux, and viennoiserie.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ambience Card 2: Bakery Barista Counter -->
+        <div class="crumb-card rounded-3xl overflow-hidden group">
+          <div class="h-60 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=700&auto=format&fit=crop"
+              alt="Coffee Served with Fresh Bakery Treats" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h4 class="font-serif text-lg font-bold text-[#4A2E25]">Artisan Coffee & Treats</h4>
+            <p class="text-xs text-[#7C5B52] mt-1 leading-relaxed">
+              Single-origin roast espresso poured to pair seamlessly with your favorite warm croissant.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ambience Card 3: Fresh Loaves on Shelves -->
+        <div class="crumb-card rounded-3xl overflow-hidden group">
+          <div class="h-60 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=700&auto=format&fit=crop"
+              alt="Fresh Artisan Breads on Rustic Wooden Shelves" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h4 class="font-serif text-lg font-bold text-[#4A2E25]">Rustic Wooden Shelves</h4>
+            <p class="text-xs text-[#7C5B52] mt-1 leading-relaxed">
+              Warm crusty sourdough and country baguettes arranged straight off the baker's cooling peels.
+            </p>
+          </div>
+        </div>
+
+        <!-- Ambience Card 4: Morning Patisserie Vibe -->
+        <div class="crumb-card rounded-3xl overflow-hidden group">
+          <div class="h-60 overflow-hidden bg-[#FEEDDE] img-zoom-container">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=700&auto=format&fit=crop"
+              alt="Morning Sunshine Over Parisian Bakery Treats" class="w-full h-full object-cover" loading="lazy">
+          </div>
+          <div class="p-5">
+            <h4 class="font-serif text-lg font-bold text-[#4A2E25]">Warm Paris Morning</h4>
+            <p class="text-xs text-[#7C5B52] mt-1 leading-relaxed">
+              A serene haven bathed in warm sunlight, soft acoustics, and the timeless joy of sweet comfort.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 8: Love at First Bite (Reviews)    -->
+  <!-- ========================================== -->
+  <section id="testimonials" class="py-20 sm:py-24 bg-[#FFFDF9] border-y border-[#E9A6A1]/20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center space-x-1.5 text-[#E9A6A1]">
+          <span>♥</span><span>♥</span><span>♥</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          Little Treats. Big Smiles.
+        </h2>
+        <p class="text-[#654238] text-base">
+          Read genuine impressions from the food lovers, neighbors, and celebration hosts who have made <strong
+            class="text-[#4A2E25]">CRUMBÉ</strong> their sweet ritual.
+        </p>
+      </div>
+
+      <!-- 3 Testimonial Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Review 1 -->
+        <article class="crumb-card rounded-3xl p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <!-- 5 Star Rating -->
+            <div class="flex items-center space-x-1 text-amber-500" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-sm text-[#4A2E25] font-medium leading-relaxed italic">
+              "The Butter Croissants at CRUMBÉ are the closest thing to Paris I have tasted anywhere in this country.
+              The 27 flaky layers crackle with real Normandy butter, and the interior is silky and honeycombed. Truly
+              world-class patisserie."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#E9A6A1]/20 flex items-center space-x-3.5">
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E9A6A1] shadow-sm flex-shrink-0 bg-[#FEEDDE]">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                alt="Clémence Renard - Food Writer & Culinary Critic" class="w-full h-full object-cover object-center"
+                loading="lazy">
+            </div>
+            <div>
+              <p class="font-bold text-sm text-[#4A2E25]">Clémence Renard</p>
+              <p class="text-xs text-[#7C5B52]">Food Writer & Culinary Critic</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Review 2 -->
+        <article class="crumb-card rounded-3xl p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <!-- 5 Star Rating -->
+            <div class="flex items-center space-x-1 text-amber-500" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-sm text-[#4A2E25] font-medium leading-relaxed italic">
+              "My morning ritual begins here without fail. The sourdough has an extraordinary blistered crust, and their
+              warm chocolate chunk cookies with Maldon sea salt are completely addictive. The staff welcomes you like
+              family."
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#E9A6A1]/20 flex items-center space-x-3.5">
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E9A6A1] shadow-sm flex-shrink-0 bg-[#FEEDDE]">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+                alt="Julian Vance - Neighborhood Regular" class="w-full h-full object-cover object-center"
+                loading="lazy">
+            </div>
+            <div>
+              <p class="font-bold text-sm text-[#4A2E25]">Julian Vance</p>
+              <p class="text-xs text-[#7C5B52]">Neighborhood Regular</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Review 3 -->
+        <article class="crumb-card rounded-3xl p-8 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <!-- 5 Star Rating -->
+            <div class="flex items-center space-x-1 text-amber-500" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <p class="text-sm text-[#4A2E25] font-medium leading-relaxed italic">
+              "CRUMBÉ created our wedding cake — a three-tiered Strawberry Dream Gateau with pressed edible botanicals.
+              It was breathtakingly beautiful, and our guests are still raving about how light and delicious it tasted!"
+            </p>
+          </div>
+          <div class="pt-4 border-t border-[#E9A6A1]/20 flex items-center space-x-3.5">
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#E9A6A1] shadow-sm flex-shrink-0 bg-[#FEEDDE]">
+              <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=200&auto=format&fit=crop"
+                alt="Sophie & Marcus - Wedding Cake Clients" class="w-full h-full object-cover object-center"
+                loading="lazy">
+            </div>
+            <div>
+              <p class="font-bold text-sm text-[#4A2E25]">Sophie & Marcus</p>
+              <p class="text-xs text-[#7C5B52]">Wedding Cake Clients</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 9: Your Next Sweet Obsession       -->
+  <!-- ========================================== -->
+  <section id="promotions"
+    class="py-20 sm:py-24 bg-gradient-to-r from-[#4A2E25] via-[#3D251E] to-[#4A2E25] text-[#FFF7ED] relative overflow-hidden">
+
+    <!-- Background Bakery Vector Art Flourishes -->
+    <div class="absolute inset-0 pointer-events-none opacity-10" aria-hidden="true">
+      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <circle cx="20" cy="20" r="15" fill="#E9A6A1" />
+        <circle cx="85" cy="80" r="25" fill="#E9A6A1" />
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <!-- Text & Action (7 cols) -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+
+          <div
+            class="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-[#FFF7ED]/10 border border-[#E9A6A1]/40 text-xs uppercase tracking-[0.2em] font-semibold text-[#E9A6A1]">
+            <span>Freshly Baked Daily</span>
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#FFF7ED] leading-tight">
+            Good Days Start With <br>
+            <span class="italic font-normal text-[#E9A6A1]">Something Sweet.</span>
+          </h2>
+
+          <p class="text-base sm:text-lg text-[#FFF7ED]/85 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Discover your favorites, find something new, and make every little moment delicious. Whether you're picking
+            up a morning box of warm brioche or planning a memorable celebration, <strong
+              class="font-bold text-[#FFF7ED]">CRUMBÉ</strong> is here to sweeten your journey.
+          </p>
+
+          <div
+            class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+            <a href="#menu"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm uppercase tracking-wider font-bold btn-primary text-center">
+              Explore Our Menu
+            </a>
+            <a href="#contact"
+              class="w-full sm:w-auto px-8 py-4 rounded-full text-sm uppercase tracking-wider font-bold bg-transparent text-[#FFF7ED] border border-[#FFF7ED]/40 hover:bg-[#FFF7ED]/10 text-center transition-all">
+              Plan Your Visit
+            </a>
+          </div>
+
+          <!-- Micro-features -->
+          <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#FFF7ED]/70">
+            <span>✨ French Butter Batches</span>
+            <span>✨ Slow Cold Fermentation</span>
+            <span>✨ Dine-In & Takeaway Boxes</span>
+          </div>
+
+        </div>
+
+        <!-- Advertising Composition Showcase (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="relative mx-auto max-w-sm lg:max-w-none">
+            <div
+              class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-[#E9A6A1]/40 img-zoom-container">
+              <img src="https://images.pexels.com/photos/1334133/pexels-photo-1334133.jpeg"
+                alt="Luxury CRUMBÉ Patisserie Collection Assortment" class="w-full h-80 sm:h-96 object-cover"
+                loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#4A2E25]/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-center sm:text-left">
+                <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-semibold">Gift Boxes &
+                  Catering</span>
+                <p class="font-serif text-lg font-bold text-[#FFF7ED]">The Grand CRUMBÉ Selection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SECTION 10: Visit Us & Get in Touch        -->
+  <!-- ========================================== -->
+  <section id="contact" class="py-20 sm:py-24 bg-[#FFF7ED] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <span class="text-xs uppercase tracking-[0.25em] text-[#D88A85] font-bold">Warm Welcome Awaits</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#4A2E25]">
+          Visit Us & Get in Touch
+        </h2>
+        <p class="text-[#654238] text-base">
+          Have an inquiry for an event, wish to reserve a morning bread loaf, or simply want to say hello? We would love
+          to hear from you.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+        <!-- Left: Bakery Details & Interactive Styled Map (5 cols) -->
+        <div class="lg:col-span-5 space-y-8">
+
+          <div class="crumb-card rounded-3xl p-8 space-y-6">
+            <h3 class="font-serif text-2xl font-bold text-[#4A2E25]">The Bakery Boutique</h3>
+
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start space-x-3">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#E9A6A1]/20 flex items-center justify-center text-[#4A2E25] flex-shrink-0 mt-0.5">
+                  📍
+                </div>
+                <div>
+                  <p class="font-bold text-[#4A2E25]">Location Address</p>
+                  <p class="text-[#7C5B52]">42 Sweetbriar Court, St. Germain Quarter, NY 10012</p>
+                  <span class="text-xs text-[#D88A85] font-medium">Corner of Pastry Walk & Maple Ave</span>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#E9A6A1]/20 flex items-center justify-center text-[#4A2E25] flex-shrink-0 mt-0.5">
+                  ⏰
+                </div>
+                <div>
+                  <p class="font-bold text-[#4A2E25]">Opening Hours</p>
+                  <p class="text-[#7C5B52]">Tuesday – Friday: 7:00 AM – 7:00 PM</p>
+                  <p class="text-[#7C5B52]">Saturday – Sunday: 7:30 AM – 6:00 PM</p>
+                  <p class="text-xs text-[#D88A85] font-semibold mt-0.5">Monday: Closed for deep fermentation</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-3">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#E9A6A1]/20 flex items-center justify-center text-[#4A2E25] flex-shrink-0 mt-0.5">
+                  📞
+                </div>
+                <div>
+                  <p class="font-bold text-[#4A2E25]">Direct Contact</p>
+                  <p class="text-[#7C5B52]">Phone: +1 (555) 789-2786</p>
+                  <p class="text-[#7C5B52]">Email: hello@crumbebakery.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Styled Map Area Placeholder with Interactive Route Pinning -->
+          <div class="crumb-card rounded-3xl p-6 overflow-hidden relative border border-[#E9A6A1]/40">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#4A2E25]">Interactive Neighborhood
+                Map</span>
+              <span class="text-xs bg-[#E9A6A1]/30 text-[#4A2E25] font-bold px-2 py-0.5 rounded-full">Easy
+                Parking</span>
+            </div>
+
+            <!-- Map Visualization Box -->
+            <div
+              class="w-full h-44 rounded-2xl bg-[#FEEDDE] relative overflow-hidden border border-[#E9A6A1]/30 flex items-center justify-center text-center p-4">
+              <!-- Map Grid SVG Pattern -->
+              <svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="mapGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#4A2E25" stroke-width="0.8" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#mapGrid)" />
+              </svg>
+
+              <!-- Central Destination Pin -->
+              <div class="relative z-10 flex flex-col items-center">
+                <div
+                  class="w-10 h-10 rounded-full bg-[#4A2E25] text-[#FFF7ED] flex items-center justify-center shadow-lg border-2 border-[#E9A6A1] animate-bounce">
+                  🥐
+                </div>
+                <div
+                  class="mt-2 bg-[#FFFDF9] px-3 py-1 rounded-full shadow border border-[#E9A6A1]/40 text-[11px] font-bold text-[#4A2E25]">
+                  CRUMBÉ Atelier & Café
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-xs text-[#7C5B52]">
+              <span>Accessible by Metro Station St. Germain (Line 4)</span>
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                class="font-bold text-[#4A2E25] hover:text-[#D88A85] underline decoration-[#E9A6A1]">
+                Open Directions &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Inquiry Form with Live Javascript Validation (7 cols) -->
+        <div class="lg:col-span-7">
+          <div class="crumb-card rounded-3xl p-8 sm:p-10 shadow-lg border border-[#E9A6A1]/40">
+
+            <div class="mb-6">
+              <span class="text-xs uppercase tracking-widest text-[#E9A6A1] font-bold">Write to our Patisserie</span>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#4A2E25] mt-1">
+                Let's Make Something Delicious.
+              </h3>
+              <p class="text-xs sm:text-sm text-[#7C5B52] mt-1">
+                Fill in your details below and our team will get back to you promptly with availability and answers.
+              </p>
+            </div>
+
+            <!-- Feedback Container for Success Alert -->
+            <div id="contactFormFeedback" class="mb-6 hidden"></div>
+
+            <form id="contactInquiryForm" class="space-y-5" novalidate>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="contactName"
+                    class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1.5">
+                    Your Name <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="text" id="contactName" placeholder="e.g. Eleanor Vance"
+                    class="w-full px-4 py-3 rounded-xl bg-[#FFFDF9] border border-[#E9A6A1]/50 text-sm text-[#4A2E25] placeholder-[#7C5B52]/50 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] transition-all"
+                    required>
+                </div>
+
+                <div>
+                  <label for="contactEmail"
+                    class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1.5">
+                    Email Address <span class="text-rose-500">*</span>
+                  </label>
+                  <input type="email" id="contactEmail" placeholder="eleanor@example.com"
+                    class="w-full px-4 py-3 rounded-xl bg-[#FFFDF9] border border-[#E9A6A1]/50 text-sm text-[#4A2E25] placeholder-[#7C5B52]/50 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] transition-all"
+                    required>
+                </div>
+              </div>
+
+              <div>
+                <label for="contactInquiryType"
+                  class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1.5">
+                  Inquiry Purpose
+                </label>
+                <select id="contactInquiryType"
+                  class="w-full px-4 py-3 rounded-xl bg-[#FFFDF9] border border-[#E9A6A1]/50 text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] transition-all">
+                  <option value="general">General Inquiry or Table Question</option>
+                  <option value="catering">Event Catering & Morning Pastry Boxes</option>
+                  <option value="custom-cake">Custom Cake Consultation</option>
+                  <option value="wholesale">Wholesale & Coffee Shop Supply</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contactMessage"
+                  class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1.5">
+                  Your Message <span class="text-rose-500">*</span>
+                </label>
+                <textarea id="contactMessage" rows="4"
+                  placeholder="Tell us what you're dreaming of, dates, dietary preferences, or questions..."
+                  class="w-full px-4 py-3 rounded-xl bg-[#FFFDF9] border border-[#E9A6A1]/50 text-sm text-[#4A2E25] placeholder-[#7C5B52]/50 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] transition-all"
+                  required></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit"
+                  class="w-full py-4 rounded-xl text-sm uppercase tracking-wider font-bold btn-primary text-center">
+                  Let's Make Something Delicious
+                </button>
+              </div>
+
+              <p class="text-[11px] text-[#7C5B52] text-center">
+                We respect your privacy. No spam, ever. Only delicious communications.
+              </p>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- PROFESSIONAL FOOTER DESIGN                 -->
+  <!-- ========================================== -->
+  <footer class="bg-[#4A2E25] text-[#FFF7ED] pt-16 pb-12 border-t-2 border-[#E9A6A1]/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Main Footer 4-Column Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-14 border-b border-[#FFF7ED]/15">
+
+        <!-- Column 1: Brand Identity -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-full bg-[#FFF7ED] flex items-center justify-center text-[#4A2E25]">
+              <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none">
+                <path d="M7 21C8.5 13.5 23.5 13.5 25 21C21 19.5 11 19.5 7 21Z" fill="#E9A6A1" stroke="#4A2E25"
+                  stroke-width="1.5" />
+                <path d="M12 17C14 13.5 18 13.5 20 17" stroke="#4A2E25" stroke-width="1.25" />
+                <circle cx="16" cy="8.5" r="1.5" fill="#4A2E25" />
+              </svg>
+            </div>
+            <span class="font-serif text-3xl font-extrabold tracking-tight text-[#FFF7ED]">CRUMBÉ</span>
+          </div>
+
+          <p class="text-xs text-[#FFF7ED]/80 leading-relaxed max-w-xs">
+            Artisanal European bakery specializing in handcrafted pastries, golden croissants, celebratory cakes, and
+            wild-levain sourdough. Made fresh every morning with love.
+          </p>
+
+          <div class="pt-2 flex items-center space-x-2 text-xs text-[#E9A6A1]">
+            <svg class="w-4 h-4 text-[#E9A6A1]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="font-medium">European Patisserie Heritage</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Explore Navigation -->
+        <div class="space-y-4">
+          <h4 class="font-serif text-lg font-bold text-[#FFF7ED] tracking-wide border-b border-[#E9A6A1]/30 pb-2">
+            Explore
+          </h4>
+          <ul class="space-y-2.5 text-xs text-[#FFF7ED]/80">
+            <li>
+              <a href="#hero" class="hover:text-[#E9A6A1] transition-colors flex items-center space-x-2">
+                <span>&rarr;</span><span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#story" class="hover:text-[#E9A6A1] transition-colors flex items-center space-x-2">
+                <span>&rarr;</span><span>Our Story</span>
+              </a>
+            </li>
+            <li>
+              <a href="#treats" class="hover:text-[#E9A6A1] transition-colors flex items-center space-x-2">
+                <span>&rarr;</span><span>Signature Treats</span>
+              </a>
+            </li>
+            <li>
+              <a href="#menu" class="hover:text-[#E9A6A1] transition-colors flex items-center space-x-2">
+                <span>&rarr;</span><span>Our Menu</span>
+              </a>
+            </li>
+            <li>
+              <a href="#custom-cakes" class="hover:text-[#E9A6A1] transition-colors flex items-center space-x-2">
+                <span>&rarr;</span><span>Custom Cakes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Visit Us Details -->
+        <div class="space-y-4">
+          <h4 class="font-serif text-lg font-bold text-[#FFF7ED] tracking-wide border-b border-[#E9A6A1]/30 pb-2">
+            Visit Us
+          </h4>
+          <div class="space-y-2.5 text-xs text-[#FFF7ED]/80">
+            <p>42 Sweetbriar Court, St. Germain Quarter</p>
+            <p>New York, NY 10012</p>
+            <p class="text-[#E9A6A1] pt-1 font-medium">Tue – Fri: 7:00 AM – 7:00 PM</p>
+            <p class="text-[#E9A6A1] font-medium">Sat – Sun: 7:30 AM – 6:00 PM</p>
+            <p class="pt-1">Tel: +1 (555) 789-2786</p>
+            <p>Email: hello@crumbebakery.com</p>
+          </div>
+        </div>
+
+        <!-- Column 4: Follow the Sweetness -->
+        <div class="space-y-4">
+          <h4 class="font-serif text-lg font-bold text-[#FFF7ED] tracking-wide border-b border-[#E9A6A1]/30 pb-2">
+            Follow the Sweetness
+          </h4>
+          <p class="text-xs text-[#FFF7ED]/80 leading-relaxed">
+            Follow our daily morning bakes, pastry plating, and cake reveals on social media.
+          </p>
+
+          <div class="flex items-center space-x-3 pt-2">
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 rounded-full bg-[#FFF7ED]/10 border border-[#E9A6A1]/40 flex items-center justify-center text-[#FFF7ED] hover:bg-[#E9A6A1] hover:text-[#4A2E25] hover:scale-110 transition-all"
+              aria-label="Follow CRUMBÉ on Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 rounded-full bg-[#FFF7ED]/10 border border-[#E9A6A1]/40 flex items-center justify-center text-[#FFF7ED] hover:bg-[#E9A6A1] hover:text-[#4A2E25] hover:scale-110 transition-all"
+              aria-label="Follow CRUMBÉ on Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              </svg>
+            </a>
+            <!-- Pinterest -->
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 rounded-full bg-[#FFF7ED]/10 border border-[#E9A6A1]/40 flex items-center justify-center text-[#FFF7ED] hover:bg-[#E9A6A1] hover:text-[#4A2E25] hover:scale-110 transition-all"
+              aria-label="Follow CRUMBÉ on Pinterest">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.334 1.357-.056.208-.182.253-.419.153-1.564-.728-2.541-3.013-2.541-4.851 0-3.951 2.871-7.581 8.28-7.581 4.348 0 7.728 3.1 7.728 7.243 0 4.321-2.724 7.8-6.505 7.8-1.271 0-2.467-.661-2.876-1.442l-.782 2.981c-.283 1.085-1.047 2.446-1.56 3.284 1.173.363 2.422.56 3.719.56 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+              </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer"
+              class="w-9 h-9 rounded-full bg-[#FFF7ED]/10 border border-[#E9A6A1]/40 flex items-center justify-center text-[#FFF7ED] hover:bg-[#E9A6A1] hover:text-[#4A2E25] hover:scale-110 transition-all"
+              aria-label="Follow CRUMBÉ on TikTok">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright & Policies -->
+      <div
+        class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FFF7ED]/70 space-y-3 sm:space-y-0">
+        <p>&copy; 2026 CRUMBÉ Artisan Patisserie. All rights reserved.</p>
+        <div class="flex items-center space-x-6">
+          <button type="button" id="openPrivacyBtn"
+            class="hover:text-[#E9A6A1] transition-colors focus:outline-none">Privacy Policy</button>
+          <span>•</span>
+          <button type="button" id="openTermsBtn"
+            class="hover:text-[#E9A6A1] transition-colors focus:outline-none">Terms & Conditions</button>
+          <span>•</span>
+          <a href="#hero" class="hover:text-[#E9A6A1] transition-colors">Back to Top ↑</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL: Custom Dream Cake Inquiry (Sec 6)   -->
+  <!-- ========================================== -->
+  <div id="cakeOrderModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden" role="dialog"
+    aria-modal="true" aria-labelledby="cakeModalTitle">
+    <!-- Backdrop -->
+    <div class="modal-backdrop fixed inset-0"></div>
+
+    <!-- Modal Content Window -->
+    <div
+      class="modal-content relative bg-[#FFFDF9] rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 border-2 border-[#E9A6A1] max-h-[90vh] overflow-y-auto">
+
+      <!-- Close Button -->
+      <button type="button"
+        class="close-modal-btn absolute top-5 right-5 text-[#4A2E25]/70 hover:text-[#4A2E25] p-2 rounded-full hover:bg-[#E9A6A1]/20 transition-all focus:outline-none"
+        aria-label="Close Custom Cake Window">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="mb-5 text-center sm:text-left">
+        <span class="text-xs uppercase tracking-widest text-[#D88A85] font-bold">Bespoke Patisserie</span>
+        <h3 id="cakeModalTitle" class="font-serif text-2xl sm:text-3xl font-bold text-[#4A2E25] mt-1">
+          Create Your Dream Cake
+        </h3>
+        <p class="text-xs text-[#7C5B52] mt-1">
+          Tell us about your upcoming celebration and our head pastry chef will connect with personalized designs &
+          tasting options.
+        </p>
+      </div>
+
+      <form id="cakeOrderForm" class="space-y-4" novalidate>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="cakeCustomerName" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Your Name <span class="text-rose-500">*</span>
+            </label>
+            <input type="text" id="cakeCustomerName" placeholder="e.g. Charlotte Dubois"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              required>
+          </div>
+
+          <div>
+            <label for="cakeCustomerEmail" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Email Address <span class="text-rose-500">*</span>
+            </label>
+            <input type="email" id="cakeCustomerEmail" placeholder="charlotte@example.com"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="cakeStyleSelect" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Occasion / Cake Type
+            </label>
+            <select id="cakeStyleSelect"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]">
+              <option value="birthday">Birthday Cake</option>
+              <option value="wedding">Tiered Wedding Cake</option>
+              <option value="anniversary">Romantic Anniversary Gateau</option>
+              <option value="baby-shower">Baby Shower / Gender Reveal</option>
+              <option value="corporate">Corporate Gala Celebration</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cakeEventDate" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Event Date <span class="text-rose-500">*</span>
+            </label>
+            <input type="date" id="cakeEventDate"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"
+              required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="cakeGuestCount" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Estimated Guests
+            </label>
+            <select id="cakeGuestCount"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]">
+              <option value="6-10">6 – 10 Guests (6-inch)</option>
+              <option value="12-20">12 – 20 Guests (8-inch)</option>
+              <option value="25-45">25 – 45 Guests (2 Tiers)</option>
+              <option value="50+">50+ Guests (3+ Tiers)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cakeFlavorSelect" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+              Favorite Flavor Profile
+            </label>
+            <select id="cakeFlavorSelect"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]">
+              <option value="strawberry-chantilly">Strawberry Dream & Chantilly</option>
+              <option value="pistachio-raspberry">Sicilian Pistachio & Raspberry</option>
+              <option value="valrhona-fudge">Valrhona 70% Dark Chocolate Ganache</option>
+              <option value="salted-caramel">Salted Caramel & Roasted Pecan</option>
+              <option value="lemon-elderflower">Meyer Lemon & Elderflower</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="cakeNotes" class="block text-xs uppercase tracking-wider font-bold text-[#4A2E25] mb-1">
+            Vision, Colors & Dietary Notes
+          </label>
+          <textarea id="cakeNotes" rows="3"
+            placeholder="Share any theme inspirations, color palettes, nut allergies, or inscription requests..."
+            class="w-full px-3.5 py-2.5 rounded-xl bg-[#FFF7ED] border border-[#E9A6A1]/60 text-xs sm:text-sm text-[#4A2E25] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1]"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+            class="w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold btn-primary text-center">
+            Send Dream Cake Request
+          </button>
+        </div>
+
+        <p class="text-[10px] text-center text-[#7C5B52]">
+          Our pastry chef replies within 24 hours with custom quotes and tasting calendar options.
+        </p>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- MODAL: Privacy & Terms Information Dialog -->
+  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-hidden" role="dialog"
+    aria-modal="true" aria-labelledby="policyModalTitle">
+    <div class="modal-backdrop fixed inset-0"></div>
+    <div
+      class="modal-content relative bg-[#FFFDF9] rounded-3xl shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 border-2 border-[#E9A6A1] max-h-[85vh] overflow-y-auto">
+      <button type="button" id="closePolicyBtn"
+        class="absolute top-5 right-5 text-[#4A2E25]/70 hover:text-[#4A2E25] p-2 rounded-full hover:bg-[#E9A6A1]/20 transition-all focus:outline-none"
+        aria-label="Close Information Window">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="mb-4 text-left">
+        <span class="text-xs uppercase tracking-widest text-[#D88A85] font-bold">CRUMBÉ Standards</span>
+        <h3 id="policyModalTitle" class="font-serif text-2xl font-bold text-[#4A2E25] mt-1">
+          Privacy & Bakery Terms
+        </h3>
+      </div>
+
+      <div id="policyModalBody" class="space-y-4 text-xs sm:text-sm text-[#654238] leading-relaxed">
+        <div class="p-4 rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/30">
+          <h4 class="font-bold text-[#4A2E25] mb-1">Our Privacy Commitment</h4>
+          <p>At CRUMBÉ, we cherish customer trust as dearly as our heritage sourdough levain. When you enquire or
+            reserve treats, your email, name, and notes are used solely to fulfill your orders. We never sell, exchange,
+            or share your data with third parties.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/30">
+          <h4 class="font-bold text-[#4A2E25] mb-1">Custom Cake & Pre-Order Terms</h4>
+          <p>Custom tiered cakes require at least 5 business days advance notice to permit natural fruit macerations and
+            precise pastry scheduling. Changes or reschedules can be accommodated up to 72 hours prior to the event.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-[#FFF7ED] border border-[#E9A6A1]/30">
+          <h4 class="font-bold text-[#4A2E25] mb-1">Allergen Care & Transparency</h4>
+          <p>Our kitchen crafts treats with pure dairy, eggs, and tree nuts (almonds, pistachios, hazelnuts). Please
+            inform our staff of any severe allergies before ordering so we can accommodate you safely.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-[#E9A6A1]/30 text-center">
+        <button type="button" id="confirmPolicyBtn"
+          class="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider btn-primary">
+          Understood & Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" type="button"
+    class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-[#4A2E25] text-[#FFF7ED] border-2 border-[#E9A6A1] shadow-2xl flex items-center justify-center opacity-0 pointer-events-none translate-y-6 transition-all duration-300 hover:scale-110 hover:bg-[#351F19] focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] group cursor-pointer"
+    aria-label="Back to Top of Page" title="Back to Top">
+    <svg class="w-5 h-5 text-[#E9A6A1] group-hover:-translate-y-1 transition-transform duration-200" fill="none"
+      stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Toast Notification Container Anchor (Positioned Above Back-to-Top) -->
+  <div id="toastContainer"
+    class="fixed bottom-24 right-6 z-50 flex flex-col space-y-3 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+
+</html>

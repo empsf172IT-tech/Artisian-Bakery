@@ -1,0 +1,622 @@
+/* CRUMBÉ Artisan Patisserie — Custom Styles & Micro-Animations */
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom Color Variables */
+:root {
+  --color-cream: #FFF7ED;
+  --color-cream-light: #FFFBF5;
+  --color-cream-card: #FFF9F2;
+  --color-cocoa: #4A2E25;
+  --color-cocoa-dark: #351F19;
+  --color-cocoa-muted: #6B493F;
+  --color-blush: #E9A6A1;
+  --color-blush-light: #FDF0EF;
+  --color-blush-hover: #DE8F8A;
+  --color-gold: #D4A373;
+}
+
+/* Smooth Scrolling & Base Adjustments */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-cocoa);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: clip;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--color-blush);
+  color: var(--color-cocoa);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF7ED;
+}
+::-webkit-scrollbar-thumb {
+  background: #E9A6A1;
+  border-radius: 9999px;
+  border: 2px solid #FFF7ED;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D48E88;
+}
+
+/* Floating Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes sparkleSpin {
+  0% {
+    transform: rotate(0deg) scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes gentleDrift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, -8px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkleSpin 4s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-gentle-drift {
+  animation: gentleDrift 5s ease-in-out infinite;
+}
+
+/* Glassmorphic Navbar */
+.nav-glass {
+  background-color: rgba(255, 247, 237, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(233, 166, 161, 0.25);
+  transition: all 0.3s ease;
+}
+
+.nav-glass.scrolled {
+  background-color: rgba(255, 247, 237, 0.98);
+  box-shadow: 0 4px 20px -2px rgba(74, 46, 37, 0.08);
+}
+
+/* Active Nav Underline */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-blush);
+  border-radius: 9999px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #4A2E25;
+  font-weight: 600;
+}
+
+/* Button & Pill Shadows */
+.btn-primary {
+  background-color: var(--color-blush);
+  color: var(--color-cocoa);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(233, 166, 161, 0.45);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blush-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 166, 161, 0.55);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-cocoa);
+  border: 1.5px solid var(--color-cocoa);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(74, 46, 37, 0.06);
+  border-color: var(--color-cocoa);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background-color: var(--color-cocoa);
+  color: #FFF7ED;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(74, 46, 37, 0.25);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-cocoa-dark);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 46, 37, 0.35);
+}
+
+/* Card Styling & Hover Effects */
+.crumb-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(233, 166, 161, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(74, 46, 37, 0.05);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crumb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(74, 46, 37, 0.12);
+  border-color: rgba(233, 166, 161, 0.6);
+}
+
+/* Image Zoom Effect */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom-container img {
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.06);
+}
+
+/* Modal Animations */
+.modal-backdrop {
+  background-color: rgba(74, 46, 37, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.modal-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-hidden .modal-content {
+  transform: scale(0.95) translateY(15px);
+}
+
+.modal-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-visible .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Editorial Flourishes */
+.editorial-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(233, 166, 161, 0.6), transparent);
+}
+
+.badge-tag {
+  background-color: var(--color-blush-light);
+  color: var(--color-cocoa);
+  border: 1px solid rgba(233, 166, 161, 0.4);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Even Text Alignment (Justified with Centered Last Line) */
+.text-even {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: center;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================== */
+/* DARK THEME (Midnight Patisserie Velvet)    */
+/* ========================================== */
+html.dark {
+  --color-cream: #180F0D;
+  --color-cream-light: #211411;
+  --color-cream-card: #271814;
+  --color-cocoa: #FFF7ED;
+  --color-cocoa-dark: #FFFFFF;
+  --color-cocoa-muted: #D1B8B0;
+  --color-blush-light: #3D221E;
+}
+
+html.dark body {
+  background-color: #180F0D;
+  color: #FFF7ED;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #180F0D;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  border-color: #180F0D;
+}
+
+/* Sections in Dark Mode */
+html.dark section#hero,
+html.dark section#treats,
+html.dark section#menu,
+html.dark section#ambience,
+html.dark section#contact {
+  background: #180F0D !important;
+  color: #FFF7ED !important;
+}
+
+html.dark section#story,
+html.dark section#craftsmanship,
+html.dark section#custom-cakes,
+html.dark section#testimonials {
+  background: #211411 !important;
+  color: #FFF7ED !important;
+}
+
+/* Cards & Elevated Containers */
+html.dark .crumb-card {
+  background-color: #271814 !important;
+  border-color: rgba(233, 166, 161, 0.25) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.45);
+}
+
+html.dark .crumb-card:hover {
+  border-color: rgba(233, 166, 161, 0.55) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.65);
+}
+
+/* Typography & Headings in Dark Mode */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark .text-\[\#4A2E25\] {
+  color: #FFF7ED !important;
+}
+
+html.dark p,
+html.dark .text-\[\#654238\],
+html.dark .text-\[\#7C5B52\] {
+  color: #D6BFB7 !important;
+}
+
+/* Navigation & Glassmorphism in Dark Mode */
+html.dark .nav-glass {
+  background-color: rgba(24, 15, 13, 0.92) !important;
+  border-bottom-color: rgba(233, 166, 161, 0.2) !important;
+}
+
+html.dark .nav-glass.scrolled {
+  background-color: rgba(24, 15, 13, 0.98) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark .nav-link {
+  color: rgba(255, 247, 237, 0.82) !important;
+}
+
+html.dark .nav-link:hover,
+html.dark .nav-link.active {
+  color: #FFF7ED !important;
+}
+
+html.dark #mainNavbar svg.text-\[\#4A2E25\] {
+  color: #FFF7ED !important;
+}
+
+html.dark #themeToggleBtn {
+  border-color: rgba(233, 166, 161, 0.4) !important;
+  color: #E9A6A1 !important;
+}
+
+html.dark #themeToggleBtn:hover {
+  background-color: rgba(233, 166, 161, 0.15) !important;
+}
+
+html.dark #mobileMenuBtn {
+  color: #FFF7ED !important;
+}
+
+html.dark #mobileNavDrawer {
+  background-color: #1F1310 !important;
+  color: #FFF7ED !important;
+  border-left-color: rgba(233, 166, 161, 0.25) !important;
+}
+
+html.dark .mobile-nav-link {
+  color: #FFF7ED !important;
+  border-bottom-color: rgba(233, 166, 161, 0.15) !important;
+}
+
+/* Buttons in Dark Mode */
+html.dark .btn-secondary {
+  color: #FFF7ED !important;
+  border-color: rgba(233, 166, 161, 0.6) !important;
+}
+
+html.dark .btn-secondary:hover {
+  background-color: rgba(233, 166, 161, 0.15) !important;
+  border-color: #E9A6A1 !important;
+}
+
+/* Forms & Inputs in Dark Mode */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1C110E !important;
+  color: #FFF7ED !important;
+  border-color: rgba(233, 166, 161, 0.35) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #8C736B !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #E9A6A1 !important;
+  box-shadow: 0 0 0 2px rgba(233, 166, 161, 0.3) !important;
+}
+
+/* Modals in Dark Mode */
+html.dark .modal-content {
+  background-color: #241613 !important;
+  color: #FFF7ED !important;
+  border-color: #E9A6A1 !important;
+}
+
+html.dark .close-modal-btn,
+html.dark #closePolicyBtn {
+  color: #D6BFB7 !important;
+}
+html.dark .close-modal-btn:hover,
+html.dark #closePolicyBtn:hover {
+  color: #FFF7ED !important;
+  background-color: rgba(233, 166, 161, 0.2) !important;
+}
+
+/* Category Filter Tabs in Dark Mode */
+html.dark .menu-filter-btn {
+  background-color: #271814 !important;
+  color: #FFF7ED !important;
+  border-color: rgba(233, 166, 161, 0.35) !important;
+}
+
+html.dark .menu-filter-btn.bg-\[\#4A2E25\] {
+  background-color: #E9A6A1 !important;
+  color: #180F0D !important;
+  border-color: #E9A6A1 !important;
+}
+
+/* ========================================== */
+/* DARK MODE CONTRAST & VISIBILITY FIXES      */
+/* ========================================== */
+
+/* 1. Hero Brand Badge Pill (Image 5) */
+html.dark #hero .inline-flex.rounded-full.bg-\[\#FFFDF9\],
+html.dark #hero .inline-flex.bg-\[\#FFFDF9\] {
+  background-color: #2D1A16 !important;
+  border-color: rgba(233, 166, 161, 0.45) !important;
+}
+html.dark #hero .inline-flex.rounded-full.bg-\[\#FFFDF9\] span.text-\[\#4A2E25\],
+html.dark #hero .inline-flex.bg-\[\#FFFDF9\] span {
+  color: #FFF7ED !important;
+}
+
+/* 2. Section 2 Feature Highlights Icon Boxes (Image 4) */
+html.dark #story .w-16.h-16.bg-\[\#FFF7ED\] {
+  background-color: #38201B !important;
+  border-color: rgba(233, 166, 161, 0.4) !important;
+}
+html.dark #story .w-16.h-16.bg-\[\#FFF7ED\] svg {
+  color: #E9A6A1 !important;
+}
+html.dark #story .crumb-card:hover .w-16.h-16.bg-\[\#FFF7ED\] {
+  background-color: #E9A6A1 !important;
+}
+html.dark #story .crumb-card:hover .w-16.h-16.bg-\[\#FFF7ED\] svg {
+  color: #2D1A16 !important;
+}
+
+/* 3. Section 3 Price Badges over Images (Image 3) */
+html.dark #treats span.bg-\[\#FFFDF9\]\/95,
+html.dark #treats span.bg-\[\#FFFDF9\] {
+  background-color: rgba(35, 20, 17, 0.95) !important;
+  color: #FFF7ED !important;
+  border: 1px solid rgba(233, 166, 161, 0.5) !important;
+}
+
+/* 4. Section 5 Menu Card Category Badges over Images (Image 2) */
+html.dark #menu span.bg-\[\#FFFDF9\]\/95,
+html.dark #menu span.bg-\[\#FFFDF9\] {
+  background-color: rgba(35, 20, 17, 0.95) !important;
+  color: #E9A6A1 !important;
+  border: 1px solid rgba(233, 166, 161, 0.5) !important;
+}
+
+/* 5. Section 6 Custom Cakes Badge & Feature Boxes (Image 1) */
+html.dark #custom-cakes .bg-\[\#FFFDF9\]\/95,
+html.dark #custom-cakes .bg-\[\#FFFDF9\] {
+  background-color: rgba(35, 20, 17, 0.95) !important;
+  color: #FFF7ED !important;
+  border: 1px solid rgba(233, 166, 161, 0.5) !important;
+}
+html.dark #custom-cakes .p-4.bg-\[\#FFF7ED\] {
+  background-color: #2D1A16 !important;
+  border-color: rgba(233, 166, 161, 0.35) !important;
+}
+html.dark #custom-cakes .p-4.bg-\[\#FFF7ED\] h4 {
+  color: #FFF7ED !important;
+}
+html.dark #custom-cakes .p-4.bg-\[\#FFF7ED\] p {
+  color: #D6BFB7 !important;
+}
+
+/* 6. Universal Badge & Tag Contrast Fixes */
+html.dark .badge-tag {
+  background-color: #38201B !important;
+  color: #E9A6A1 !important;
+  border-color: rgba(233, 166, 161, 0.4) !important;
+}
+
+/* 7. Section 10 Map Area Pins and Notes */
+html.dark section#contact .bg-\[\#FFFDF9\] {
+  background-color: #2D1A16 !important;
+  color: #FFF7ED !important;
+  border-color: rgba(233, 166, 161, 0.4) !important;
+}
+html.dark section#contact .bg-\[\#FEEDDE\] {
+  background-color: #1F1310 !important;
+  border-color: rgba(233, 166, 161, 0.3) !important;
+}
+html.dark section#contact .w-8.h-8.bg-\[\#E9A6A1\]\/20 {
+  background-color: rgba(233, 166, 161, 0.25) !important;
+}
+
+/* 8. Navbar Logo Circle & Hero Mini Card */
+html.dark #mainNavbar .w-10.h-10.bg-\[\#FFFDF9\] {
+  background-color: #2D1A16 !important;
+  border-color: rgba(233, 166, 161, 0.6) !important;
+}
+html.dark #hero .bg-\[\#FFFDF9\].rounded-2xl {
+  background-color: #271814 !important;
+  border-color: rgba(233, 166, 161, 0.4) !important;
+}
+html.dark #hero .bg-\[\#FFFDF9\].rounded-2xl p.text-\[\#4A2E25\] {
+  color: #FFF7ED !important;
+}
+html.dark #hero .absolute.bottom-4 span.bg-\[\#FFFDF9\] {
+  background-color: #E9A6A1 !important;
+  color: #180F0D !important;
+}
+
+/* 9. Image Zoom Containers Background Fallback */
+html.dark .img-zoom-container,
+html.dark .bg-\[\#FEEDDE\] {
+  background-color: #2D1A16 !important;
+}
+
+/* Back to Top Button Styling */
+#backToTopBtn {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+#backToTopBtn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 28px -4px rgba(233, 166, 161, 0.5);
+}
+
+html.dark #backToTopBtn {
+  background-color: #241613 !important;
+  border-color: #E9A6A1 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark #backToTopBtn:hover {
+  background-color: #311D19 !important;
+  box-shadow: 0 12px 30px rgba(233, 166, 161, 0.3) !important;
+}
