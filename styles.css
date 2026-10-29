@@ -642,3 +642,32 @@ html.dark #backToTopBtn:hover {
   display: flex;
   align-items: flex-start;
 }
+
+/* =====================================================
+   Brand Logo — Dark Mode Icon SVG Colours
+   ===================================================== */
+.logo-stroke {
+  stroke: #4A2E25;
+}
+.logo-fill {
+  fill: #4A2E25;
+}
+
+html.dark .logo-stroke {
+  stroke: #FFF7ED;
+}
+html.dark .logo-fill {
+  fill: #FFF7ED;
+}
+
+/* Also fix nav-link text in dark mode */
+html.dark .nav-link {
+  color: rgba(255, 247, 237, 0.80);
+}
+html.dark .nav-link:hover,
+html.dark .nav-link.active {
+  color: #FFF7ED;
+}
+html.dark .nav-link.active {
+  font-weight: 600;
+}

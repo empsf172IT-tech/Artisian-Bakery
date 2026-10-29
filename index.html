@@ -102,23 +102,23 @@
             class="group flex items-center space-x-2.5 focus:outline-none focus:ring-2 focus:ring-[#E9A6A1] rounded-lg p-1"
             aria-label="CRUMBÉ Home">
             <div
-              class="w-10 h-10 rounded-full bg-[#FFFDF9] border border-[#E9A6A1]/60 flex items-center justify-center shadow-sm group-hover:border-[#E9A6A1] transition-colors">
+              class="w-10 h-10 rounded-full bg-[#FFFDF9] dark:bg-[#2D1A16] border border-[#E9A6A1]/60 dark:border-[#E9A6A1]/50 flex items-center justify-center shadow-sm group-hover:border-[#E9A6A1] transition-colors">
               <!-- Custom Wheat Sprig & Croissant Vector Icon -->
-              <svg class="w-6 h-6 text-[#4A2E25] group-hover:text-[#D88A85] transition-colors" viewBox="0 0 32 32"
+              <svg class="w-6 h-6 logo-icon transition-colors" viewBox="0 0 32 32"
                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 21C8.5 13.5 23.5 13.5 25 21C21 19.5 11 19.5 7 21Z" fill="#E9A6A1" fill-opacity="0.75"
-                  stroke="#4A2E25" stroke-width="1.5" stroke-linejoin="round" />
-                <path d="M12 17C14 13.5 18 13.5 20 17" stroke="#4A2E25" stroke-width="1.25" stroke-linecap="round" />
-                <circle cx="16" cy="8.5" r="1.5" fill="#4A2E25" />
-                <path d="M14 6C15 4 17 4 18 6" stroke="#4A2E25" stroke-width="1.2" stroke-linecap="round" />
+                <path d="M7 21C8.5 13.5 23.5 13.5 25 21C21 19.5 11 19.5 7 21Z" fill="#E9A6A1" fill-opacity="0.85"
+                  stroke-width="1.5" stroke-linejoin="round" class="logo-stroke" />
+                <path d="M12 17C14 13.5 18 13.5 20 17" stroke-width="1.25" stroke-linecap="round" class="logo-stroke" />
+                <circle cx="16" cy="8.5" r="1.5" class="logo-fill" />
+                <path d="M14 6C15 4 17 4 18 6" stroke-width="1.2" stroke-linecap="round" class="logo-stroke" />
               </svg>
             </div>
             <div class="flex flex-col">
-              <span class="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-[#4A2E25] leading-none">
-                CRUMB<span class="text-[#4A2E25] relative inline-block">É<span
+              <span class="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-[#4A2E25] dark:text-[#FFF7ED] leading-none">
+                CRUMB<span class="relative inline-block dark:text-[#FFF7ED]">É<span
                     class="absolute -top-1 right-0 text-[#E9A6A1] text-xs font-serif italic">´</span></span>
               </span>
-              <span class="text-[9px] uppercase tracking-[0.28em] text-[#7C5B52] font-semibold">Artisan
+              <span class="text-[9px] uppercase tracking-[0.28em] text-[#7C5B52] dark:text-[#E9A6A1]/80 font-semibold">Artisan
                 Patisserie</span>
             </div>
           </a>
@@ -366,10 +366,10 @@
         </div>
 
         <!-- Hero Premium Imagery Composition (Right, 5 cols) -->
-        <div class="lg:col-span-5 relative">
+        <div class="lg:col-span-5 relative overflow-visible">
 
           <!-- Main Advertising Composition Card -->
-          <div class="relative mx-auto max-w-md lg:max-w-none">
+          <div class="relative mx-auto max-w-md lg:max-w-none pr-6 sm:pr-8">
 
             <!-- Glow backdrop -->
             <div
@@ -402,17 +402,17 @@
               </div>
             </div>
 
-            <!-- Floating Stamp / Badge (Top-Right) -->
+            <!-- Floating Stamp / Badge (Top-Right) — outside overflow-hidden image div -->
             <div
-              class="absolute -top-5 -right-4 sm:-right-6 bg-[#4A2E25] text-[#FFF7ED] p-4 rounded-full w-24 h-24 sm:w-28 sm:h-28 flex flex-col items-center justify-center text-center shadow-xl border-2 border-[#E9A6A1] animate-gentle-drift z-20">
+              class="absolute -top-4 right-2 sm:-top-5 sm:-right-4 bg-[#4A2E25] text-[#FFF7ED] p-4 rounded-full w-20 h-20 sm:w-28 sm:h-28 flex flex-col items-center justify-center text-center shadow-xl border-2 border-[#E9A6A1] animate-gentle-drift z-20">
               <span class="text-[9px] uppercase tracking-wider text-[#E9A6A1] font-bold">Crumbé</span>
-              <span class="font-serif text-sm font-bold leading-tight">Master Artisan</span>
+              <span class="font-serif text-xs sm:text-sm font-bold leading-tight">Master Artisan</span>
               <span class="text-[8px] text-[#FFF7ED]/80">Award 2026</span>
             </div>
 
-            <!-- Floating Mini Card: Fresh Batch Announcement (Neatly Positioned Upper-Left, Clear of Bottom Text) -->
+            <!-- Floating Mini Card: Fresh Batch Announcement — outside overflow-hidden image div -->
             <div
-              class="absolute top-20 sm:top-24 -left-3 sm:-left-7 bg-[#FFFDF9] p-3 sm:p-3.5 rounded-2xl shadow-xl border border-[#E9A6A1]/40 flex items-center space-x-3 max-w-[230px] sm:max-w-[250px] animate-float-slow z-20">
+              class="absolute top-16 sm:top-24 left-0 sm:-left-7 bg-[#FFFDF9] p-3 sm:p-3.5 rounded-2xl shadow-xl border border-[#E9A6A1]/40 flex items-center space-x-3 max-w-[200px] sm:max-w-[250px] animate-float-slow z-20">
               <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=300&auto=format&fit=crop"
                   alt="Strawberry Dream Cake Preview" class="w-full h-full object-cover">
